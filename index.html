@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Tip Calculator</title>
+        <meta name="author" content="Andres Navarro Pedregal">
+        <link href="style.css" rel="stylesheet" type="text/css">
+
+        <script type="text/javascript">
+            function calculate() {
+                var cost = document.getElementById("bill").value;
+                var poor = document.getElementById("poor").checked;
+                var normal = document.getElementById("normal").checked;
+                var exceptional = document.getElementById("exceptional").checked;
+
+                var tip;
+
+                if (poor) {
+                    tip = 10 * cost / 100;
+                } else if (normal) {
+                    tip = 15 * cost / 100;
+                } else if (exceptional) {
+                    tip = 20 * cost / 100;
+                }
+
+                var tipS = "&#36 " + tip
+
+                document.getElementById("tip").innerHTML = tipS;
+            }
+        </script>
+    </head>
+    <body>
+        <div class="frame" style="width: 100%; text-align: center">
+            <div class="innerFrame" style="display: inline-block;">
+                <div class="head">
+                    <h1>Tip Calculator</h1>
+                </div>
+                <div class="body">
+                    <form class="form">
+                        <p style="text-align: left; padding-left: 10px">How much was the cost of the bill?</p>
+                        &#36; <input type="number" name="bill" id="bill" placeholder="Bill Amount" value="0" oninput="calculate()" style="font-family: Verdana;"><br>
+                        <p style="text-align: left; padding-left: 10px">How was the service?</p>
+                        <div class="radio">
+                            <input type="radio" name="service" id="poor" onchange="calculate()"> Poor Service (10%) <br>
+                            <input type="radio" name="service" checked id="normal" onchange="calculate()"> Nomal Service (15%) <br>
+                            <input type="radio" name="service" id="exceptional" onchange="calculate()"> Exceptional Service (20%) <br>
+                        </div>
+                    </form>
+                    <div class="tipFinal">
+                        <p>You have to pay &#8211&#8250 </p>
+                        <h2 id="tip">&#36 0</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
